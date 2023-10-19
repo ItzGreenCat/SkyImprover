@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "skyimprover",
+  "version": "${version}",
+  "name": "SkyImprover",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/greencat/SkyImprover"
+  },
+  "license": "MIT",
+  "icon": "assets/skyimprover/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "me.greencat.skyimprover.SkyImprover"
+    ],
+    "modmenu": [
+      "me.greencat.skyimprover.compatibility.ModMenu"
+    ]
+  },
+  "mixins": [
+    "skyimprover.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
