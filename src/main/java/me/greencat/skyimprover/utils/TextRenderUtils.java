@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.fabric.api.client.rendering.v1.WorldRenderContext;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.render.BufferBuilder;
 import net.minecraft.client.render.LightmapTextureManager;
 import net.minecraft.client.render.Tessellator;
@@ -15,7 +16,10 @@ import net.minecraft.util.math.Vec3d;
 import org.joml.Matrix4f;
 import org.lwjgl.opengl.GL11;
 
+import java.awt.*;
+
 public class TextRenderUtils {
+    public static final int backgroundColor = new Color(0,0,0,100).getRGB();
     public static void renderText(WorldRenderContext context, Text text, Vec3d pos, boolean seeThrough) {
         renderText(context, text, pos, 1, seeThrough);
     }
@@ -54,5 +58,19 @@ public class TextRenderUtils {
 
         RenderSystem.depthFunc(GL11.GL_LEQUAL);
         matrices.pop();
+    }
+    public static void renderHUDText(DrawContext context,int x,int y,Text... text){
+        int height = text.length * 10;
+        int width = 0;
+        for(Text t : text){
+            int length = MinecraftClient.getInstance().textRenderer.getWidth(t.asOrderedText());
+            if(length > width){
+                width = length;
+            }
+        }
+        context.fill(x - 3,y - 3,x + width + 3,y + height + 3,backgroundColor);
+        for(int i = 0;i < text.length;i++){
+            context.drawText(MinecraftClient.getInstance().textRenderer,text[i],x,y + i * 10,Color.WHITE.getRGB(),false);
+        }
     }
 }

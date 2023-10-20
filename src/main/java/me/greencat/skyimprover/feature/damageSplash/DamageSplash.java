@@ -15,6 +15,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.math.Vec3d;
 
 import java.awt.*;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -23,6 +24,7 @@ import java.util.regex.Pattern;
 public class DamageSplash implements Module {
     private static final Pattern pattern = Pattern.compile("[✧✯]?(\\d{1,3}(?:,\\d{3})*[⚔+✧❤♞☄✷ﬗ✯]*)");
     private static final Deque<RenderInformation> damages = new LinkedList<>();
+    private static final DecimalFormat decimalFormat = new DecimalFormat("0.00");
     private static final Random random = new Random();
     @Override
     public void registerEvent() {
@@ -38,7 +40,22 @@ public class DamageSplash implements Module {
             Matcher matcher = pattern.matcher(customName == null ? "" : customName);
             if(matcher.matches() && customName != null){
                 String damage =  customName.replaceAll( "[^\\d]", "");
-                damages.add(new RenderInformation(entity.getX(), entity.getY(), entity.getZ(),damage,new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255))));
+                if(Config.damageSplashCompact){
+                    try {
+                        int damageInteger = Integer.parseInt(damage);
+                        if (damageInteger >= 1000 && damageInteger < 1000000) {
+                            double damageDouble = damageInteger / 1000.0D;
+                            damage = decimalFormat.format(damageDouble) + "K";
+                        } else if (damageInteger >= 1000000 && damageInteger < 1000000000) {
+                            double damageDouble = damageInteger / 1000000.0D;
+                            damage = decimalFormat.format(damageDouble) + "M";
+                        } else if (damageInteger >= 1000000000) {
+                            double damageDouble = damageInteger / 1000000000.0D;
+                            damage = decimalFormat.format(damageDouble) + "B";
+                        }
+                    } catch(Exception ignored){}
+                }
+                damages.add(new RenderInformation(entity.getX() + random.nextDouble(Config.damageSplashOffset * 2.0D) - Config.damageSplashOffset, entity.getY() + random.nextDouble(Config.damageSplashOffset * 2.0D) - Config.damageSplashOffset, entity.getZ() + random.nextDouble(Config.damageSplashOffset * 2.0D) - Config.damageSplashOffset,damage,new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255))));
                 if (MinecraftClient.getInstance().world != null) {
                     MinecraftClient.getInstance().world.removeEntity(entity.getId(), Entity.RemovalReason.UNLOADED_WITH_PLAYER);
                 }
