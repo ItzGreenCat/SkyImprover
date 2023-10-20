@@ -24,4 +24,16 @@ public class Config extends MidnightConfig {
     public static float rainTimerGuiOffsetX = 0.3F;
     @Entry(category = "misc",isSlider = true,min = 0.0F,max = 1.0F)
     public static float rainTimerGuiOffsetY = 0.3F;
+
+    @Comment(category = "dungeon")
+    public static Comment m3FreezeHelper;
+    @Entry(category = "dungeon")
+    public static boolean m3FreezeHelperEnable = true;
+
+    @Comment(category = "dungeon")
+    public static Comment dungeonDeathMessage;
+    @Entry(category = "dungeon")
+    public static boolean dungeonDeathMessageEnable = true;
+    @Entry(category = "dungeon")
+    public static String dungeonDeathMessageContent = "BOOM!";
 }
