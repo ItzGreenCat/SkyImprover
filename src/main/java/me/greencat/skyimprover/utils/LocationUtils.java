@@ -18,13 +18,11 @@ import java.util.List;
 public class LocationUtils {
     public static boolean isOnSkyblock = false;
     public static boolean isInDungeons = false;
+    public static boolean isInKuudra = false;
     public static final ObjectArrayList<String> STRING_SCOREBOARD = new ObjectArrayList<>();
 
-    public static void register(){
-        ClientPlayConnectionEvents.JOIN.register(LocationUtils::update);
-    }
-
-    public static void update(ClientPlayNetworkHandler clientPlayNetworkHandler, PacketSender packetSender, MinecraftClient minecraftClient){
+    public static void update(){
+        MinecraftClient minecraftClient = MinecraftClient.getInstance();
         updateScoreboard(minecraftClient);
         updatePlayerPresenceFromScoreboard(minecraftClient);
     }
@@ -35,18 +33,20 @@ public class LocationUtils {
         if (client.world == null || client.isInSingleplayer() || sidebar.isEmpty()) {
             isOnSkyblock = false;
             isInDungeons = false;
+            isInKuudra = false;
         }
 
         if (sidebar.isEmpty() && !fabricLoader.isDevelopmentEnvironment()) return;
         String string = sidebar.toString();
-            if (fabricLoader.isDevelopmentEnvironment() || sidebar.get(0).contains("SKYBLOCK") || sidebar.get(0).contains("SKIBLOCK")) {
+            if (sidebar.get(0).contains("SKYBLOCK") || sidebar.get(0).contains("SKIBLOCK")) {
                 if (!isOnSkyblock) {
                     isOnSkyblock = true;
                 }
             } else {
                 isOnSkyblock = false;
             }
-            isInDungeons = fabricLoader.isDevelopmentEnvironment() || isOnSkyblock && string.contains("The Catacombs");
+            isInDungeons = isOnSkyblock && string.contains("The Catacombs");
+            isInKuudra = isOnSkyblock && string.contains("Kuudra");
     }
     private static void updateScoreboard(MinecraftClient client) {
         try {

@@ -4,10 +4,13 @@
   "package": "me.greencat.skyimprover.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "BeaconBlockEntityRendererAccessor"
   ],
   "client": [
+    "FrustumAccessor",
     "MixinEntityRenderer",
-    "MixinEntityRendererDispatcher"
+    "MixinEntityRendererDispatcher",
+    "WorldRendererAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

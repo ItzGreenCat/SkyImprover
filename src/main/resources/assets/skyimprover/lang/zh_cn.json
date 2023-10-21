@@ -18,6 +18,8 @@
   "skyimprover.midnightconfig.dungeonDeathMessage": "地牢任意玩家死亡后发送消息",
   "skyimprover.midnightconfig.dungeonDeathMessageEnable": "地牢任意玩家死亡后发送消息",
   "skyimprover.midnightconfig.dungeonDeathMessageContent": "消息内容",
+  "skyimprover.midnightconfig.kuudraHelper": "Kuudra助手",
+  "skyimprover.midnightconfig.kuudraHelperEnable": "Kuudra助手",
   "rainTimer.hud.NextRain": "下一场雨",
   "rainTimer.hud.rainLeft": "这场雨剩余时长",
   "rainTimer.hud.NextThunder": "下一场雷雨"

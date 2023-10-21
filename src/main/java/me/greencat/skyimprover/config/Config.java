@@ -36,4 +36,8 @@ public class Config extends MidnightConfig {
     public static boolean dungeonDeathMessageEnable = true;
     @Entry(category = "dungeon")
     public static String dungeonDeathMessageContent = "BOOM!";
+    @Comment(category = "dungeon")
+    public static Comment kuudraHelper;
+    @Entry(category = "dungeon")
+    public static boolean kuudraHelperEnable = true;
 }

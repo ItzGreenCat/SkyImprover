@@ -24,7 +24,7 @@ public class M3FreezeHelper implements Module {
     }
 
     private static void onTick(MinecraftClient client) {
-        if(System.currentTimeMillis() - lastReceiveTargetMessage >= 4900 && !isSend){
+        if(System.currentTimeMillis() - lastReceiveTargetMessage >= 5250 && !isSend){
             isSend = true;
             MinecraftClient.getInstance().inGameHud.setTitle(Text.literal(Formatting.RED + "Freeze!"));
         }
