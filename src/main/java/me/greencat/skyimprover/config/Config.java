@@ -24,6 +24,14 @@ public class Config extends MidnightConfig {
     public static float rainTimerGuiOffsetX = 0.3F;
     @Entry(category = "misc",isSlider = true,min = 0.0F,max = 1.0F)
     public static float rainTimerGuiOffsetY = 0.3F;
+    @Comment(category = "misc")
+    public static Comment ferocityCount;
+    @Entry(category = "misc")
+    public static boolean ferocityCountEnable = true;
+    @Entry(category = "misc",isSlider = true,min = 0.0F,max = 1.0F)
+    public static float ferocityCountGuiOffsetX = 0.3F;
+    @Entry(category = "misc",isSlider = true,min = 0.0F,max = 1.0F)
+    public static float ferocityCountGuiOffsetY = 0.4F;
 
     @Comment(category = "dungeon")
     public static Comment m3FreezeHelper;

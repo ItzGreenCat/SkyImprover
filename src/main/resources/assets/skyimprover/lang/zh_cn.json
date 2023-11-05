@@ -20,6 +20,10 @@
   "skyimprover.midnightconfig.dungeonDeathMessageContent": "消息内容",
   "skyimprover.midnightconfig.kuudraHelper": "Kuudra助手",
   "skyimprover.midnightconfig.kuudraHelperEnable": "Kuudra助手",
+  "skyimprover.midnightconfig.ferocityCount": "Ferocity计数器",
+  "skyimprover.midnightconfig.ferocityCountEnable": "Ferocity计数器",
+  "skyimprover.midnightconfig.ferocityCountGuiOffsetX": "Ferocity计数器屏幕横轴位置",
+  "skyimprover.midnightconfig.ferocityCountGuiOffsetY": "Ferocity计数器屏幕纵轴位置",
   "rainTimer.hud.NextRain": "下一场雨",
   "rainTimer.hud.rainLeft": "这场雨剩余时长",
   "rainTimer.hud.NextThunder": "下一场雷雨"

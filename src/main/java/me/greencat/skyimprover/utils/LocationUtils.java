@@ -38,6 +38,11 @@ public class LocationUtils {
 
         if (sidebar.isEmpty() && !fabricLoader.isDevelopmentEnvironment()) return;
         String string = sidebar.toString();
+        if(sidebar.isEmpty()){
+            isInDungeons = false;
+            isInKuudra = false;
+            return;
+        }
             if (sidebar.get(0).contains("SKYBLOCK") || sidebar.get(0).contains("SKIBLOCK")) {
                 if (!isOnSkyblock) {
                     isOnSkyblock = true;

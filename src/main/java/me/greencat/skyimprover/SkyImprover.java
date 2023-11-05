@@ -18,11 +18,6 @@ public class SkyImprover implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         MidnightConfig.init(MODID, Config.class);
-
-        FeatureLoader.load(DamageSplash.class);
-        FeatureLoader.load(RainTimer.class);
-        FeatureLoader.load(M3FreezeHelper.class);
-        FeatureLoader.load(DungeonDeathMessage.class);
-        FeatureLoader.load(KuudraHelper.class);
+        FeatureLoader.loadAll("me.greencat.skyimprover.feature");
     }
 }
